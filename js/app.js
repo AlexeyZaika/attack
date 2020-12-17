@@ -248,6 +248,11 @@ let sliderBanner = new Swiper('.banner__sliders', {
 function email_test(input) {
 	return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.value);
 }
+var greeting = document.querySelector('.greeting');
+function visible() {
+  greeting.classList.add('_visible');
+}
+setTimeout(visible, 3000);
 
 var ua = window.navigator.userAgent;
 var msie = ua.indexOf("MSIE ");
