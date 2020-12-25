@@ -59,10 +59,10 @@ if (sliderScrollItems.length > 0) {
 function sliders_bild_callback(params) { }
 
 let sliderBanner = new Swiper('.banner__sliders', {
-	autoplay: {
+	/*autoplay: {
 		delay: 5000,
 		disableOnInteraction: false,
-	},
+	},*/
 	observer: true,
 	observeParents: true,
 	slidesPerView: 1,
@@ -90,7 +90,7 @@ let greeting = document.querySelector('.greeting');
 function visible() {
   greeting.classList.add('_visible');
 }
-setTimeout(visible, 1500);
+setTimeout(visible, 1000);
 
 
 var ua = window.navigator.userAgent;
@@ -792,7 +792,7 @@ function parallaxBanner() {
 	for (i = 0; i < slider.length; i++) {
 		let yPos = window.pageYOffset / slider[i].dataset.speed;
 		let height = slider[i].offsetHeight;
-		yPos = +yPos + 50;
+		yPos = -yPos + 50;
 		let coords = '50%' + yPos + '%';
 		slider[i].style.backgroundPosition = coords;
 	}
@@ -808,7 +808,7 @@ function parallaxMedia() {
 
 	let yPos = window.pageYOffset / slider.dataset.speed;
 	yPos = -yPos;
-	let coords = '0%'+ yPos + 'px';
+	let coords = '50%'+ yPos + 'px';
 	slider.style.backgroundPosition = coords;
 }
 
