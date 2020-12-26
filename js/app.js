@@ -59,10 +59,10 @@ if (sliderScrollItems.length > 0) {
 function sliders_bild_callback(params) { }
 
 let sliderBanner = new Swiper('.banner__sliders', {
-	/*autoplay: {
+	autoplay: {
 		delay: 5000,
 		disableOnInteraction: false,
-	},*/
+	},
 	observer: true,
 	observeParents: true,
 	slidesPerView: 1,
@@ -107,6 +107,20 @@ if (isIE()) {
 if (isMobile.any()) {
 	document.querySelector('body').classList.add('_touch');
 }
+function testWebP(callback) {
+	var webP = new Image();
+	webP.onload = webP.onerror = function () {
+		callback(webP.height == 2);
+	};
+	webP.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
+}
+testWebP(function (support) {
+	if (support == true) {
+		document.querySelector('body').classList.add('_webp');
+	} else {
+		document.querySelector('body').classList.add('_no-webp');
+	}
+});
 
 if (document.querySelector('.wrapper')) {
 	document.querySelector('.wrapper').classList.add('_loaded');
@@ -791,10 +805,9 @@ function parallaxBanner() {
 
 	for (i = 0; i < slider.length; i++) {
 		let yPos = window.pageYOffset / slider[i].dataset.speed;
-		let height = slider[i].offsetHeight;
-		yPos = -yPos + 50;
-		let coords = '50%' + yPos + '%';
-		slider[i].style.backgroundPosition = coords;
+		yPos = +yPos;
+		let coords = yPos + 'px';
+		slider[i].style.top = coords;
 	}
 	
 }
