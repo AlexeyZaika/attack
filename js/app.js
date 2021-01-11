@@ -107,20 +107,6 @@ if (isIE()) {
 if (isMobile.any()) {
 	document.querySelector('body').classList.add('_touch');
 }
-function testWebP(callback) {
-	var webP = new Image();
-	webP.onload = webP.onerror = function () {
-		callback(webP.height == 2);
-	};
-	webP.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
-}
-testWebP(function (support) {
-	if (support == true) {
-		document.querySelector('body').classList.add('_webp');
-	} else {
-		document.querySelector('body').classList.add('_no-webp');
-	}
-});
 
 if (document.querySelector('.wrapper')) {
 	document.querySelector('.wrapper').classList.add('_loaded');
